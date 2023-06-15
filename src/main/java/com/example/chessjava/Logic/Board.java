@@ -42,15 +42,13 @@ public abstract class Board {
         squareArray[61].putPiece(new Bishop(Color.WHITE, squareArray[61]));
         squareArray[62].putPiece(new Knight(Color.WHITE, squareArray[62]));
         squareArray[63].putPiece(new Rook(Color.WHITE, squareArray[63]));
-        //List<Coordinates> lists = squareArray[0][0].getOccupyingPiece().getLegalMoves();
-        //int a = 1+1;
     }
 
     public static Square[] getSquareArray(){
         return squareArray;
     }
-    public static boolean isWhiteToMove(){
-        return whiteToMove;
+    public static boolean canMove(Color color){
+        return (color == Color.WHITE) == whiteToMove;
     }
 
     public static Piece getCurrPiece() {
@@ -60,8 +58,7 @@ public abstract class Board {
     public static void setCurrPiece(Piece currentPiece) {
         currPiece = currentPiece;
     }
-
-    public void paintComponent(){
-
+    public static void moved(){
+        whiteToMove=!whiteToMove;
     }
 }

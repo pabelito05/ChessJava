@@ -2,7 +2,6 @@ package com.example.chessjava.Logic.Pieces;
 
 
 import com.example.chessjava.Logic.Board;
-import com.example.chessjava.Logic.Coordinates;
 import com.example.chessjava.Logic.Piece;
 import com.example.chessjava.Logic.Square;
 import javafx.scene.image.Image;
@@ -21,35 +20,39 @@ public class Rook extends Piece {
     }
 
     @Override
-    public List<Coordinates> getLegalMoves() {
-        List<Coordinates> legalMovesList = new ArrayList<>();
+    public List<Integer> getLegalMoves() {
+        List<Integer> legalMovesList = new ArrayList<>();
         int x = square.getX();
         int y = square.getY();
         Square[] squareArray = Board.getSquareArray();
-//        for(int i=x+1;i<8;i++){
-//            if (squareArray[i][y].isOccupied()){
-//                if(squareArray[i][y].getOccupyingPiece().getColor()!=color) legalMovesList.add(new Coordinates(i,y));
-//                else break;
-//            }else legalMovesList.add(new Coordinates(i,y));
-//        }
-//        for(int i=x-1;i>=0;i--){
-//            if (squareArray[i][y].isOccupied()){
-//                if(squareArray[i][y].getOccupyingPiece().getColor()!=color) legalMovesList.add(new Coordinates(i,y));
-//                else break;
-//            }else legalMovesList.add(new Coordinates(i,y));
-//        }
-//        for(int i=y+1;i<8;i++){
-//            if (squareArray[x][i].isOccupied()){
-//                if(squareArray[x][i].getOccupyingPiece().getColor()!=color) legalMovesList.add(new Coordinates(x,i));
-//                else break;
-//            }else legalMovesList.add(new Coordinates(x,i));
-//        }
-//        for(int i=y-1;i>=0;i--){
-//            if (squareArray[x][i].isOccupied()){
-//                if(squareArray[x][i].getOccupyingPiece().getColor()!=color) legalMovesList.add(new Coordinates(x,i));
-//                else break;
-//            }else legalMovesList.add(new Coordinates(x,i));
-//        }
+        for(int i=x+1;i<8;i++){
+            int z = i*8+y;
+            if (squareArray[z].isOccupied()){
+                if(squareArray[z].getOccupyingPiece().getColor()!=color) legalMovesList.add(z);
+                break;
+            }else legalMovesList.add(z);
+        }
+        for(int i=x-1;i>=0;i--){
+            int z = i*8+y;
+            if (squareArray[z].isOccupied()){
+                if(squareArray[z].getOccupyingPiece().getColor()!=color) legalMovesList.add(z);
+                break;
+            }else legalMovesList.add(z);
+        }
+        for(int i=y+1;i<8;i++){
+            int z = x*8+i;
+            if (squareArray[z].isOccupied()){
+                if(squareArray[z].getOccupyingPiece().getColor()!=color) legalMovesList.add(z);
+                break;
+            }else legalMovesList.add(z);
+        }
+        for(int i=y-1;i>=0;i--){
+            int z = x*8+i;
+            if (squareArray[z].isOccupied()){
+                if(squareArray[z].getOccupyingPiece().getColor()!=color) legalMovesList.add(z);
+                break;
+            }else legalMovesList.add(z);
+        }
         return legalMovesList;
     }
 

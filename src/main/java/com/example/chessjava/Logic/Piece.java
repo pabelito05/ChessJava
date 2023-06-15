@@ -35,5 +35,5 @@ public abstract class Piece {
 
     }
 
-    public abstract List<Coordinates> getLegalMoves();
+    public abstract List<Integer> getLegalMoves();
 }
